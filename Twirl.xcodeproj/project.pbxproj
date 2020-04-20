@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,9 +15,15 @@
 		2045F488244D13A600574147 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2045F486244D13A600574147 /* LaunchScreen.storyboard */; };
 		2045F490244D145F00574147 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2045F48F244D145F00574147 /* InputView.swift */; };
 		2045F492244D146900574147 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2045F491244D146900574147 /* SettingsView.swift */; };
-		2045F494244D147400574147 /* DataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2045F493244D147400574147 /* DataView.swift */; };
 		2045F496244D1DC100574147 /* OpeningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2045F495244D1DC100574147 /* OpeningView.swift */; };
 		2045F498244D240300574147 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2045F497244D240300574147 /* ContainerView.swift */; };
+		2045F4A6244D57FE00574147 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 2045F4A5244D57FE00574147 /* SwiftUICharts */; };
+		2045F4AA244D619600574147 /* DataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2045F4A9244D619600574147 /* DataView.swift */; };
+		2045F4AD244D62D700574147 /* StopWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2045F4AB244D61E400574147 /* StopWatch.swift */; };
+		2045F4AF244DF1B700574147 /* CorpsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2045F4AE244DF1B700574147 /* CorpsView.swift */; };
+		2045F4B1244DF4A400574147 /* ExtensionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2045F4B0244DF4A400574147 /* ExtensionsView.swift */; };
+		2045F4B3244DF4B100574147 /* FeetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2045F4B2244DF4B100574147 /* FeetView.swift */; };
+		2045F4BC244E123600574147 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 2045F4BB244E123600574147 /* Charts */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,9 +37,13 @@
 		2045F489244D13A600574147 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2045F48F244D145F00574147 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		2045F491244D146900574147 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		2045F493244D147400574147 /* DataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataView.swift; sourceTree = "<group>"; };
 		2045F495244D1DC100574147 /* OpeningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpeningView.swift; sourceTree = "<group>"; };
 		2045F497244D240300574147 /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
+		2045F4A9244D619600574147 /* DataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataView.swift; sourceTree = "<group>"; };
+		2045F4AB244D61E400574147 /* StopWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatch.swift; sourceTree = "<group>"; };
+		2045F4AE244DF1B700574147 /* CorpsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorpsView.swift; sourceTree = "<group>"; };
+		2045F4B0244DF4A400574147 /* ExtensionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsView.swift; sourceTree = "<group>"; };
+		2045F4B2244DF4B100574147 /* FeetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeetView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +51,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2045F4A6244D57FE00574147 /* SwiftUICharts in Frameworks */,
+				2045F4BC244E123600574147 /* Charts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,9 +87,13 @@
 				2045F483244D13A600574147 /* Preview Content */,
 				2045F48F244D145F00574147 /* InputView.swift */,
 				2045F491244D146900574147 /* SettingsView.swift */,
-				2045F493244D147400574147 /* DataView.swift */,
 				2045F495244D1DC100574147 /* OpeningView.swift */,
 				2045F497244D240300574147 /* ContainerView.swift */,
+				2045F4A9244D619600574147 /* DataView.swift */,
+				2045F4AB244D61E400574147 /* StopWatch.swift */,
+				2045F4AE244DF1B700574147 /* CorpsView.swift */,
+				2045F4B0244DF4A400574147 /* ExtensionsView.swift */,
+				2045F4B2244DF4B100574147 /* FeetView.swift */,
 			);
 			path = Twirl;
 			sourceTree = "<group>";
@@ -106,6 +122,10 @@
 			dependencies = (
 			);
 			name = Twirl;
+			packageProductDependencies = (
+				2045F4A5244D57FE00574147 /* SwiftUICharts */,
+				2045F4BB244E123600574147 /* Charts */,
+			);
 			productName = Twirl;
 			productReference = 2045F478244D13A100574147 /* Twirl.app */;
 			productType = "com.apple.product-type.application";
@@ -134,6 +154,10 @@
 				Base,
 			);
 			mainGroup = 2045F46F244D13A100574147;
+			packageReferences = (
+				2045F4A4244D57FE00574147 /* XCRemoteSwiftPackageReference "ChartView" */,
+				2045F4BA244E123600574147 /* XCRemoteSwiftPackageReference "swiftui-charts" */,
+			);
 			productRefGroup = 2045F479244D13A100574147 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -161,13 +185,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2045F494244D147400574147 /* DataView.swift in Sources */,
+				2045F4B3244DF4B100574147 /* FeetView.swift in Sources */,
+				2045F4AF244DF1B700574147 /* CorpsView.swift in Sources */,
+				2045F4B1244DF4A400574147 /* ExtensionsView.swift in Sources */,
 				2045F492244D146900574147 /* SettingsView.swift in Sources */,
 				2045F47C244D13A100574147 /* AppDelegate.swift in Sources */,
 				2045F490244D145F00574147 /* InputView.swift in Sources */,
 				2045F498244D240300574147 /* ContainerView.swift in Sources */,
 				2045F496244D1DC100574147 /* OpeningView.swift in Sources */,
 				2045F47E244D13A100574147 /* SceneDelegate.swift in Sources */,
+				2045F4AD244D62D700574147 /* StopWatch.swift in Sources */,
+				2045F4AA244D619600574147 /* DataView.swift in Sources */,
 				2045F480244D13A100574147 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -306,6 +334,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Twirl/Preview Content\"";
+				DEVELOPMENT_TEAM = XVKARUFFB2;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Twirl/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -325,6 +354,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Twirl/Preview Content\"";
+				DEVELOPMENT_TEAM = XVKARUFFB2;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Twirl/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -360,6 +390,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2045F4A4244D57FE00574147 /* XCRemoteSwiftPackageReference "ChartView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppPear/ChartView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.0;
+			};
+		};
+		2045F4BA244E123600574147 /* XCRemoteSwiftPackageReference "swiftui-charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/spacenation/swiftui-charts.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2045F4A5244D57FE00574147 /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2045F4A4244D57FE00574147 /* XCRemoteSwiftPackageReference "ChartView" */;
+			productName = SwiftUICharts;
+		};
+		2045F4BB244E123600574147 /* Charts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2045F4BA244E123600574147 /* XCRemoteSwiftPackageReference "swiftui-charts" */;
+			productName = Charts;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2045F470244D13A100574147 /* Project object */;
 }

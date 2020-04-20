@@ -25,8 +25,9 @@ struct OpeningView: View {
             Text("Select three areas in which you want to improve")
                 .font(.title)
                 .fontWeight(.light)
-                .frame(maxWidth: 384, alignment: .center)
+                .frame(maxWidth: 250, alignment: .center)
                 .foregroundColor(.gray)
+                .multilineTextAlignment(.center)
             Spacer()
                 .frame(height: 128)
             HStack {

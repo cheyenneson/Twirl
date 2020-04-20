@@ -62,6 +62,8 @@ struct ContentView: View {
                     .navigationBarItems(
                         leading: NavLogo()
                     )
+                
+                Spacer()
 
                 NavigationLink(destination: ContainerView()
                     .navigationBarBackButtonHidden(true)
