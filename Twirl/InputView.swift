@@ -20,8 +20,6 @@ struct InputView: View {
             Text("Enter workout")
                 .font(.title)
                 .padding()
-            Text("Select your category")
-                .padding()
             HStack {
                     Button(action: {
                            self.feetSelected.toggle()
@@ -35,21 +33,22 @@ struct InputView: View {
                            Group {
                                VStack { // FEET
                                    Image("feet").resizable()
-                                       .frame(width: 84.0, height: 72.0)
+                                       .frame(width: 63.0, height: 54.0)
 
                                    Text("feet")
                                    .fontWeight(.light)
                                    .foregroundColor(.black)
-                                   .font(.system(size: 20.0))
+                                   .font(.system(size: 14.0))
                                }
                            }
-                           .frame(width: 128.0, height: 128.0)
+                           .frame(width: 96.0, height: 96.0)
                            .overlay(
                                RoundedRectangle(cornerRadius: 8)
                                    .stroke(self.feetSelected ? Color.pink : Color.white, lineWidth: 3)
                            )
                        }
                        .buttonStyle(PlainButtonStyle())
+                
                     Button(action: {
                         self.corpsSelected.toggle()
                         if self.feetSelected {
@@ -62,21 +61,22 @@ struct InputView: View {
                         Group {
                             VStack { // CORPS
                                 Image("portdecorps").resizable()
-                                    .frame(width: 48.0, height: 72.0)
+                                    .frame(width: 36.0, height: 54.0)
 
                                 Text("port de corps")
                                 .fontWeight(.light)
                                 .foregroundColor(.black)
-                                .font(.system(size: 20.0))
+                                .font(.system(size: 14.0))
                             }
                         }
-                        .frame(width: 128.0, height: 128.0)
+                        .frame(width: 96.0, height: 96.0)
                         .overlay(
                             RoundedRectangle(cornerRadius: 8)
                                 .stroke(self.corpsSelected ? Color.pink : Color.white, lineWidth: 3)
                         )
                     }
                     .buttonStyle(PlainButtonStyle())
+                
                     Button(action: {
                         self.extensionsSelected.toggle()
                         if self.corpsSelected {
@@ -89,15 +89,15 @@ struct InputView: View {
                         Group {
                             VStack { // EXTENSIONS
                                 Image("extensions").resizable()
-                                    .frame(width: 40.0, height: 72.0)
+                                    .frame(width: 30.0, height: 54.0)
 
                                 Text("extensions")
                                 .fontWeight(.light)
                                 .foregroundColor(.black)
-                                .font(.system(size: 20.0))
+                                .font(.system(size: 14.0))
                             }
                         }
-                        .frame(width: 128.0, height: 128.0)
+                        .frame(width: 96.0, height: 96.0)
                         .overlay(
                             RoundedRectangle(cornerRadius: 8)
                                 .stroke(self.extensionsSelected ? Color.pink : Color.white, lineWidth: 3)
@@ -105,19 +105,22 @@ struct InputView: View {
                     }
                     .buttonStyle(PlainButtonStyle())
                 }
-                .frame(height: 40)
+                .frame(height: 30)
                 .padding()
             
             Spacer()
             
             if self.corpsSelected {
                 CorpsView()
+                .padding()
             }
             if self.feetSelected {
                 CorpsView() // FIXME - change later
+                .padding()
             }
             if self.extensionsSelected {
                 CorpsView()  // FIXME - change later
+                .padding()
             }
             
             Spacer()

@@ -52,6 +52,7 @@ struct DataView: View {
                     }
                 }
             }
+            .frame(height: 352)
             
             VStack {
                 HStack {

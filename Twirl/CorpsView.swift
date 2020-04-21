@@ -37,6 +37,54 @@ struct MultiPicker: View  {
     }
 }
 
+struct Toast<Presenting>: View where Presenting: View {
+
+    /// The binding that decides the appropriate drawing in the body.
+    @Binding var isShowing: Bool
+    /// The view that will be "presenting" this toast
+    let presenting: () -> Presenting
+    /// The text to show
+    let text: Text
+
+    var body: some View {
+
+        GeometryReader { geometry in
+
+            ZStack(alignment: .center) {
+
+                self.presenting()
+                    .blur(radius: self.isShowing ? 1 : 0)
+
+                VStack {
+                    self.text
+                }
+                .frame(width: geometry.size.width / 2,
+                       height: geometry.size.height / 5)
+                .background(Color.pink)
+                .foregroundColor(Color.primary)
+                .cornerRadius(20)
+                .transition(.slide)
+                    .opacity(self.isShowing ? 0.8 : 0)
+                .multilineTextAlignment(.center)
+                .font(.title)
+            }
+
+        }
+
+    }
+
+}
+
+extension View {
+
+    func toast(isShowing: Binding<Bool>, text: Text) -> some View {
+        Toast(isShowing: isShowing,
+              presenting: { self },
+              text: text)
+    }
+
+}
+
 struct CorpsView: View {
     @State var workout = ""
     @State var easySelected = false
@@ -45,28 +93,32 @@ struct CorpsView: View {
     @State var showCheck = false
     
     @State var data: [(String, [String])] = [
-        ("Hours", Array(0...10).map { "\($0)" }),
-        ("Minutes", Array(0...59).map { "\($0)" }),
-        ("Seconds", Array(0...59).map { "\($0)" })
+        ("Hours", Array(0...10).map { "\($0) Hours" }),
+        ("Minutes", Array(0...59).map { "\($0) Minutes" })
     ]
     @State var selection: [String] = [0, 0, 0].map { "\($0)" }
     
+    @State var hiit = false
+    @State var run = false
+    @State var yoga = false
+    @State var band = false
+    @State var stretch = false
+    @State var cal = false // calisthenics
+    @State var weight = false
+    @State var pilates = false
+    @State var zumba = false
+    
+    @State var showToast: Bool = false
+    
     var body: some View {
         VStack {
-            Spacer()
-            
-            TextField("What did you do...", text: $workout)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .frame(maxWidth: 300)
-            
             VStack {
-                Text("How long did you do this activity?")
-                MultiPicker(data: data, selection: $selection).frame(height: 300)
-                    .frame(maxWidth: 300, maxHeight: 150)
+                Divider()
+                .frame(maxWidth: 300)
+                Text("Intensity")
+                .font(.system(size: 16, weight: .heavy, design: .default))
+//                .offset(y: 16)
             }
-            
-            Text("Intensity")
-                .padding()
             HStack {
                 Button(action: {
                     self.showCheck = true
@@ -78,14 +130,23 @@ struct CorpsView: View {
                         self.medSelected = false
                     }
                 }) {
-                    Text("Easy")
-                        .background(Rectangle()
-                            .fill(self.easySelected ? Color.gray : Color.green)
-                            .cornerRadius(4)
-                            .frame(width: 72, height: 44))
-                        .foregroundColor(Color.black)
+                    Group {
+                        VStack {
+                            Text("Easy")
+                                .fontWeight(.light)
+                                .foregroundColor(.black)
+                                .font(.system(size: 20.0))
+                        }
+                    }
+                    .frame(width: 80.0, height: 24.0)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(self.easySelected ? Color.pink : Color.white, lineWidth: 1)
+                    )
                 }
-                    .padding()
+                .padding()
+                
+                
                 
                 Spacer()
                     .frame(maxWidth: 8)
@@ -100,12 +161,19 @@ struct CorpsView: View {
                         self.hardSelected = false
                     }
                 }) {
-                    Text("Medium")
-                        .background(Rectangle()
-                            .fill(self.medSelected ? Color.gray : Color.orange)
-                            .cornerRadius(4)
-                            .frame(width: 72, height: 44))
-                        .foregroundColor(Color.black)
+                    Group {
+                        VStack {
+                            Text("Medium")
+                                .fontWeight(.light)
+                                .foregroundColor(.black)
+                                .font(.system(size: 20.0))
+                        }
+                    }
+                    .frame(width: 80.0, height: 24.0)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(self.medSelected ? Color.pink : Color.white, lineWidth: 1)
+                    )
                 }
                     .padding()
                 
@@ -122,17 +190,113 @@ struct CorpsView: View {
                         self.medSelected = false
                     }
                 }) {
-                    Text("Hard")
-                        .background(Rectangle()
-                            .fill(self.hardSelected ? Color.gray : Color.red)
-                            .cornerRadius(4)
-                            .frame(width: 72, height: 44))
-                        .foregroundColor(Color.black)
+                    Group {
+                        VStack {
+                            Text("Hard")
+                                .fontWeight(.light)
+                                .foregroundColor(.black)
+                                .font(.system(size: 20.0))
+                        }
+                    }
+                    .frame(width: 80.0, height: 24.0)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(self.hardSelected ? Color.pink : Color.white, lineWidth: 1)
+                    )
                 }
-                    .padding()
+                .padding()
             }
             
+            Divider()
+                .frame(maxWidth: 300)
+            
+            Text("What did you do...")
+                .frame(maxWidth: 300)
+                .font(.system(size: 16, weight: .heavy, design: .default))
+            
+            ScrollView(.horizontal) {
+                HStack {
+                    Button(action: {
+                        self.hiit.toggle()
+                    }) {
+                        Text("HIIT")
+                            .foregroundColor(self.hiit ? .pink : .black)
+                    }
+                    
+                    Button(action: {
+                        self.run.toggle()
+                    }) {
+                        Text("Running")
+                            .foregroundColor(self.run ? .pink : .black)
+                    }
+                    
+                    Button(action: {
+                        self.yoga.toggle()
+                    }) {
+                        Text("Yoga")
+                            .foregroundColor(self.yoga ? .pink : .black)
+                    }
+                    
+                    Button(action: {
+                        self.band.toggle()
+                    }) {
+                        Text("TheraBand")
+                            .foregroundColor(self.band ? .pink : .black)
+                    }
+                    
+                    Button(action: {
+                        self.stretch.toggle()
+                    }) {
+                        Text("Stretching")
+                            .foregroundColor(self.stretch ? .pink : .black)
+                    }
+                    
+                    Button(action: {
+                        self.cal.toggle()
+                    }) {
+                        Text("Calisthenics")
+                            .foregroundColor(self.cal ? .pink : .black)
+                    }
+                    
+                    Button(action: {
+                        self.weight.toggle()
+                    }) {
+                        Text("Weight Training")
+                            .foregroundColor(self.weight ? .pink : .black)
+                    }
+                    
+                    Button(action: {
+                        self.pilates.toggle()
+                    }) {
+                        Text("Pilates")
+                            .foregroundColor(self.pilates ? .pink : .black)
+                    }
+                    
+                    Button(action: {
+                        self.zumba.toggle()
+                    }) {
+                        Text("Zumba")
+                            .foregroundColor(self.zumba ? .pink : .black)
+                    }
+                }
+            }
+            .frame(width: 300, height: 40)
+            
+            Divider()
+                .frame(maxWidth: 300)
+            
+            VStack {
+                Text("Total Time Spent")
+                .font(.system(size: 16, weight: .heavy, design: .default))
+                MultiPicker(data: data, selection: $selection).frame(height: 300)
+                    .frame(maxWidth: 300, maxHeight: 150)
+            }
+            
+            Divider()
+                .offset(y: 16)
+            
             Spacer()
+                .frame(height: 16)
             
             Button(action: {
                 self.workout = ""
@@ -140,17 +304,34 @@ struct CorpsView: View {
                 self.medSelected = false
                 self.hardSelected = false
                 self.showCheck = false
-                // FIXME - should show a toast or something
+                
+                withAnimation {
+                    self.showToast.toggle()
+                }
+                
+                self.hiit = false
+                self.run = false
+                self.yoga = false
+                self.band = false
+                self.stretch = false
+                self.cal = false // calisthenics
+                self.weight = false
+                self.pilates = false
+                self.zumba = false
             }) {
-                Image("check")
-                    .resizable()
-                    .frame(width: 32, height: 32)
+                HStack {
+                    Text("Enter Workout")
+                        .font(.system(size: 24))
+                    Image("check")
+                        .resizable()
+                        .frame(width: 28, height: 28)
+                }
             }
             .opacity(self.showCheck ? 1 : 0)
-            .offset(x: 124)
+            .offset(y: 16)
             
-            Spacer()
         }
+        .toast(isShowing: $showToast, text: Text("Workout has been entered"))
     }
 }
 
